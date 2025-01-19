@@ -1,0 +1,98 @@
+<div>
+  <a class="underline cursor-pointer" [routerLink]="['/users']">Back</a>
+</div>
+<div class="w-full h-auto flex justify-center items-center">
+  <form
+    [formGroup]="updatedUserForm"
+    (ngSubmit)="onSubmit($event)"
+    class="w-1/2 flex flex-col gap-y-10"
+    action=""
+  >
+    <div id="col1" class="flex flex-col gap-x-10 gap-y-10">
+      <div class="w-full flex flex-col bg-white">
+        <span class="w-12 ml-2 z-10 bg-inherit">Name</span>
+        <input
+          class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+          placeholder="John"
+          formControlName="name"
+          type="text"
+          name="name"
+          id="name"
+        />
+        @if(updatedUserForm.get('name')?.hasError('required') &&
+        updatedUserForm.get('name')?.touched) {
+        <p class="text-red-600 text-xs">Name is required</p>
+        } @if(updatedUserForm.get('name')?.hasError('minlength') &&
+        updatedUserForm.get('name')?.touched) {
+        <p class="text-red-600 text-xs">Name must be at least 3 characters</p>
+        }
+      </div>
+      <div class="flex flex-col bg-white">
+        <span class="w-20 ml-2 z-10 bg-inherit">Last name</span>
+        <input
+          class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+          placeholder="LastName"
+          formControlName="lastName"
+          type="text"
+          name="lastName"
+          id="lastName"
+        />
+        @if(updatedUserForm.get('lastName')?.hasError('required') &&
+        updatedUserForm.get('lastName')?.touched) {
+        <p class="text-red-600 text-xs">LastName is required</p>
+        } @if(updatedUserForm.get('lastName')?.hasError('minlength') &&
+        updatedUserForm.get('lastName')?.touched) {
+        <p class="text-red-600 text-xs">
+          LastName must be at least 3 characters
+        </p>
+        }
+      </div>
+      <div class="flex flex-col bg-white">
+        <span class="w-12 ml-2 z-10 bg-inherit">Phone</span>
+        <input
+          class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+          placeholder="Phone"
+          formControlName="phone"
+          type="text"
+          name="phone"
+          id="phone"
+        />
+        @if(updatedUserForm.get('phone')?.hasError('required') &&
+        updatedUserForm.get('phone')?.touched) {
+        <p class="text-red-600 text-xs">Phone is required</p>
+        } @if(updatedUserForm.get('phone')?.hasError('minlength') &&
+        updatedUserForm.get('phone')?.touched) {
+        <p class="text-red-600 text-xs">Phone must be at least 3 characters</p>
+        }
+      </div>
+      <div class="flex flex-col bg-white">
+        <span class="w-20 ml-2 z-10 bg-inherit">Nickname</span>
+        <input
+          class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+          placeholder="Nickname"
+          formControlName="nickname"
+          type="text"
+          name="nickname"
+          id="nickname"
+        />
+        @if(updatedUserForm.get('nickname')?.hasError('required') &&
+        updatedUserForm.get('nickname')?.touched) {
+        <p class="text-red-600 text-xs">Nickname is required</p>
+        } @if(updatedUserForm.get('nickname')?.hasError('minlength') &&
+        updatedUserForm.get('nickname')?.touched) {
+        <p class="text-red-600 text-xs">
+          Nickname must be at least 3 characters
+        </p>
+        }
+      </div>
+    </div>
+    <div class="w-full flex justify-end">
+      <button
+        [disabled]="updatedUserForm.invalid"
+        class="border-2 border-black py-2 px-4 rounded-md hover:bg-slate-200 disabled:bg-slate-200 disabled:text-slate-400"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+</div>

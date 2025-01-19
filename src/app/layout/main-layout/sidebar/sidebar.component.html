@@ -1,0 +1,7 @@
+<aside class="h-screen bg-black text-white rounded-tr-lg rounded-br-lg">
+  <div class="py-6 flex flex-col items-center justify-center">
+    @for(item of menu; track $index) {
+    <a [routerLink]="item.link">{{ item.name }}</a>
+    }
+  </div>
+</aside>

@@ -1,1 +1,157 @@
-<p>lolazo</p>
+<div>
+  <a class="underline cursor-pointer" [routerLink]="['/users']">Back</a>
+</div>
+<div class="w-full h-auto flex justify-center items-center">
+  <form
+    [formGroup]="createUserForm"
+    (ngSubmit)="onSubmit($event)"
+    class="w-1/2 flex flex-col gap-y-10"
+    action=""
+  >
+    <div id="col1" class="flex flex-col gap-x-10 gap-y-10">
+      <div id="personal-info">
+        <h3 class="text-lg font-semibold">Personal Info</h3>
+        <div id="personal-info-inputs" class="flex flex-row gap-x-10">
+          <div class="w-1/2 flex flex-col gap-y-3">
+            <div id="name" class="w-full flex flex-col bg-white">
+              <span class="w-12 ml-2 z-10 bg-inherit">Name</span>
+              <input
+                class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+                placeholder="John"
+                formControlName="name"
+                type="text"
+                name="name"
+                id="name"
+              />
+              @if(createUserForm.get('name')?.hasError('required') ||
+              createUserForm.get('name')?.hasError('minlength') ||
+              createUserForm.get('name')?.hasError('maxlength') &&
+              createUserForm.get('name')?.touched) {
+              <span class="text-red-500">{{ getErrorMessage("name") }}</span>
+              }
+            </div>
+            <div id="lastname" class="w-full flex flex-col bg-white">
+              <span class="w-20 ml-2 z-10 bg-inherit">Last name</span>
+              <input
+                class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+                placeholder="Doe"
+                formControlName="lastName"
+                type="text"
+                name="name"
+                id="lastname"
+              />
+            </div>
+          </div>
+          <div class="w-1/2 flex flex-col gap-y-3">
+            <div id="birthdate" class="w-full flex flex-col bg-white">
+              <span class="w-20 ml-2 z-10 bg-inherit">Birthdate</span>
+              <input
+                class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+                placeholder="YYY/MM/DD"
+                formControlName="birthdate"
+                type="text"
+                name="name"
+                id="birthdate"
+              />
+            </div>
+            <div id="pfp-url" class="w-full flex flex-col bg-white">
+              <span class="w-20 ml-2 z-10 bg-inherit">PFP URL</span>
+              <input
+                class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+                placeholder="http://profile.picture.url"
+                formControlName="pfpUrl"
+                type="text"
+                name="pfpUrl"
+                id="name"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="contact-info">
+        <h3 class="text-lg font-semibold">Contact Info</h3>
+        <div
+          id="contact-info-inputs"
+          class="flex flex-row gap-x-10 gap-y-3 flex-wrap"
+        >
+          <div id="nickname" class="w-full flex flex-col bg-white">
+            <span class="w-20 ml-2 z-10 bg-inherit">Nickname</span>
+            <input
+              class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+              placeholder="Carlos123"
+              formControlName="nickname"
+              type="text"
+              name="nickname"
+              id="name"
+            />
+          </div>
+          <div id="phone" class="w-full flex flex-col bg-white">
+            <span class="w-12 ml-2 z-10 bg-inherit">Phone</span>
+            <input
+              class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+              placeholder="123456789"
+              formControlName="phone"
+              type="text"
+              name="name"
+              id="phone"
+            />
+          </div>
+          <div id="email" class="w-full flex flex-col bg-white">
+            <span class="w-12 ml-2 z-10 bg-inherit">Email</span>
+            <input
+              class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+              placeholder="email@example.com"
+              formControlName="email"
+              type="email"
+              name="name"
+              id="email"
+            />
+          </div>
+        </div>
+      </div>
+      <div id="private-info">
+        <h3 class="text-lg font-semibold">Private Info</h3>
+        <div
+          id="private-info-inputs"
+          class="flex flex-row gap-x-10 gap-y-3 flex-wrap"
+        >
+          <div id="role" class="w-full flex flex-col bg-white">
+            <span class="w-9 ml-2 z-10 bg-inherit">Role</span>
+            <select
+              class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+              formControlName="role"
+              name="role"
+              id="role"
+              [value]="'lol'"
+            >
+              <option [value]="">Select a role</option>
+              @for(role of USERS_ROLES; track $index) {
+              <option [value]="role.id">{{ role.name }}</option>
+              }
+            </select>
+          </div>
+          <div id="passwords" class="w-full flex flex-row gap-x-10">
+            <div id="password" class="w-full flex flex-col bg-white">
+              <span class="w-20 ml-2 z-10 bg-inherit">Password</span>
+              <input
+                class="w-full h-10 p-4 -mt-2 bg-transparent border-2 rounded-md"
+                placeholder="John"
+                formControlName="password"
+                type="text"
+                name="password"
+                id="name"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex justify-end">
+      <button
+        class="border-2 border-black py-2 px-4 rounded-md hover:bg-slate-200 disabled:bg-slate-200 disabled:text-slate-400"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+</div>

@@ -4,6 +4,7 @@ import { environment } from '../../../../environments/environments';
 import { User } from '../interfaces/user.interface';
 import { SuccessResponse } from '../../../core/interfaces/success-response.interface';
 import { UpdateUserRequest } from '../interfaces/update-user-request.interface';
+import { CreateUserRequest } from '../interfaces/create-user-request.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,13 @@ export class UserService {
   findOne(id: string) {
     return this.http.get<SuccessResponse<User>>(
       `${environment.apiUrl}/users/find-one?id=${id}`
+    );
+  }
+
+  create(user: CreateUserRequest) {
+    return this.http.post<SuccessResponse<User>>(
+      `${environment.apiUrl}/users/create`,
+      user
     );
   }
 
